@@ -1,0 +1,7 @@
+hide all
+show cartoon
+set dash_color, brown
+bg_color white
+color red, chain B
+color blue, chain C
+

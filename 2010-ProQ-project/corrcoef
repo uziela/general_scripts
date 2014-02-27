@@ -1,0 +1,169 @@
+#!/usr/bin/perl -w 
+require './scripts/stat.pl';
+
+if(scalar(@ARGV==2)) {
+    @a=`cat $ARGV[0]|awk '{print \$1}'`;
+    @b=`cat $ARGV[1]|awk '{print \$1}'`;
+   # $s_a=scalar(@a);
+   # $s_b=scalar(@b);
+   # print "hej: $s_a $s_b\n";
+    $col1="1 from file $ARGV[0]";
+    $col2="1 from file $ARGV[1]";
+
+} else {
+    $file=$ARGV[0];
+    $col1=$ARGV[1];
+    $col2=$ARGV[2];
+
+    @a=();
+    @b=();  
+    print "$file $col1 $col2\n";
+    open(FILE,"$file");
+    while(<FILE>)
+    {
+    next if(/^#/);
+    chomp;
+    
+    if(/\d+/)
+    {
+        @temp=split(/\s+/);
+        
+        #$temp[$col1-1]=0 if($temp[$col1-1]<0);
+        #$temp[$col2-1]=0 if($temp[$col2-1]<0);
+        push(@a,$temp[$col1-1]);
+        push(@b,$temp[$col2-1]);
+    }
+
+    }          
+    close(FILE);
+}
+$number=scalar @a;
+print "Number of elements: $number\n";
+printf("Correlation: %9.7f\n",corrcoef([@a],[@b]));
+printf("Spearman correlation: %9.7f\n",spearman_corrcoef([@a],[@b]));
+printf("RMSE: %9.7f\n",rmse([@a],[@b]));
+printf("Mean col $col1: %8.5f\n",mean(@a));
+printf("Median col $col1: %8.5f\n",median(@a));
+printf("Min-Max col $col1: %8.5f %8.5f\n",min(@a),max(@a));
+printf("Median col $col1: %8.5f\n",median(@a));
+printf("Std dev col $col1: %8.5f\n",std(@a));
+printf("Sum col $col2: %8.5f\n",sum(@a));
+
+printf("Mean col $col2: %8.5f\n",mean(@b));
+printf("Min-Max col $col2: %8.5f %8.5f\n",min(@b),max(@b));
+printf("Median col $col2: %8.5f\n",median(@b));
+printf("Std dev col $col2: %8.5f\n",std(@b));
+printf("Sum col $col2: %8.5f\n",sum(@b));
+
+
+#sub corrcoef
+#{
+#    my ($x,$y)=@_;
+#    my @x=@{$x};
+#    my @y=@{$y};
+#    my $xm=mean(@x);
+#    my $ym=mean(@y);
+#    if(scalar @y == 0)
+#    {
+#   warn "You need to use bracket (\[\]) for both array arguments!\n";
+#    }
+#    my $cov=0;
+#    my $corr=0;
+#    my $elements=scalar(@x);
+#    for(my $i=0;$i<scalar @x;$i++)
+#    {
+##  print "$x[$i] $y[$i]\n";
+#   $cov+=($x[$i]-$xm)*($y[$i]-$ym)
+#    }
+#    $cov=$cov/($elements-1);
+#    $std_x=std(@x);
+#    $std_y=std(@y);
+#    $corr=0;
+#    if($std_x*$std_y != 0)
+#    {
+#   $corr=$cov/($std_x*$std_y);
+#    }
+#    return $corr;
+#}
+#
+#sub std
+#{
+#    my @data=@_;
+#    my $mean=mean(@data);
+#    my $n=scalar @data;
+#    if($n!=1)
+#    {
+#   my $sum=0;
+#   foreach my $term(@data)
+#   {
+#       $sum+=($term-$mean)*($term-$mean);
+#   }
+#   return sqrt(1/($n-1)*$sum);
+#    }
+#    else
+#    {
+#   return 0;
+#    }
+#}
+#
+#
+#
+#sub mean
+#{
+#    my @data=@_;
+#    my $sum=0;
+#    my $number_of_elements=scalar @data;
+#    foreach my $term(@data)
+#    {
+#   $sum+=$term;
+#    }
+#    if($number_of_elements==0)
+#    {
+#   return 0;
+#    }
+#    else
+#    {
+#   return $sum/$number_of_elements;
+#    }
+#}
+#sub median
+#{
+#    my @data=@_;
+#    my @data_s=sort numerically (@data);
+#    my $middle=int(scalar(@data)/2);
+#    return($data_s[$middle]);
+#
+#sub min
+#{
+#    my @vec=@_;
+#    my $min=$vec[0];
+#    foreach my $term(@vec)
+#    {
+#   if($term<$min)
+#   {
+#       $min=$term;
+#   }
+#   #print $term,"\n";
+#    }
+#    return $min;
+#}
+#sub max
+#{
+#    my @vec=@_;
+#    my $max=$vec[0];
+#    foreach my $term(@vec)
+#    {
+#   if($term>$max)
+#   {
+#       $max=$term;
+#   }
+##  print $term,"\n";
+#    }
+#    return $max;
+#}
+#}
+#sub numerically
+#{
+#    $b<=>$a;
+#}
+
