@@ -7,8 +7,8 @@ use strict;
 my $input_file = $ARGV[0];
 my $chain2extract = $ARGV[1];
 
-print "$input_file\n";
-print "$chain2extract\n";
+#print "$input_file\n";
+#print "$chain2extract\n";
 
 open(IN_FILE, "$input_file") or die "Error occured opening input file '$input_file': $!";
 
