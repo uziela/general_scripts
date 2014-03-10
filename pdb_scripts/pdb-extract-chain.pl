@@ -19,9 +19,9 @@ while (my $line=<IN_FILE>) {
         if ($chain eq $chain2extract) {
             print $line;
         }
-    } else {
-        print $line;
-    }
+    }   #else {
+        #    print $line;
+        #}
     last if($line =~ /^ENDMDL/);
 }
 print "\n";
