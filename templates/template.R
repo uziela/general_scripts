@@ -1,4 +1,4 @@
-#! /usr/bin/Rscript
+#!/usr/bin/env Rscript
 
 # Written by Karolis Uziela in 2014
 
