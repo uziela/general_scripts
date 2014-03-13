@@ -37,12 +37,10 @@ def read_data(filename):
         
     f.close()
     
-def write_data(output_file):
-    f = open(output_file,"w")
-    
+def write_data(output_file, out_str):
+    f = open(output_file,"w")  
     #out_str = "%s %f \n" % str_var f_var
-    #f.write(out_str)
-    
+    f.write(out_str)    
     f.close()
 
 
