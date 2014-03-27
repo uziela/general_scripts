@@ -4,6 +4,7 @@
 
 import sys
 from Bio import SeqIO
+import re
 
 ################################ Usage ################################
 
@@ -51,7 +52,7 @@ def write_data(output_file, out_str):
 input_file = sys.argv[1]
 
 # Output files/directories
-output_file = sys.argv[2]
+output_dir = sys.argv[2]
 
 # Constants
 # N/A
@@ -64,8 +65,11 @@ output_file = sys.argv[2]
 sys.stderr.write("%s is running with arguments: %s\n" % (script_name, str(sys.argv[1:])))
 
 for seq_record in SeqIO.parse(input_file, "fasta"):
-    print(seq_record.id)
-    print(str(seq_record.seq))
+    out_str = ">" + seq_record.description + "\n" + str(seq_record.seq) + "\n"
+    p = re.compile(',')
+    filename = p.sub( '', seq_record.id)
+    out_file = output_dir + "/" + filename + ".seq"
+    write_data(out_file, out_str)
 
 sys.stderr.write("%s done.\n" % script_name)
 
