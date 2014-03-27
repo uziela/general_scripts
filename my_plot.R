@@ -20,12 +20,14 @@ my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, red_points=NULL, blue
     #png(my_file, width = 180, height = 180, pointsize=6)
     #png(my_file, pointsize=18)
     #png(my_file, width = 10, height = 10, units="cm", res=600)
-    
-    if (my_ext == "pdf") {
-        pdf(my_file, width=10, height=10)
-        #pdf(my_file)
-    } else {
-        png(my_file)
+   
+    if (my_file != "NONE") {
+        if (my_ext == "pdf") {
+            pdf(my_file, width=10, height=10)
+            #pdf(my_file)
+        } else {
+            png(my_file)
+        }
     }
 
     if (is.null(my_labels)) {
@@ -52,7 +54,9 @@ my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, red_points=NULL, blue
     legend(x="topleft", legend=c(r, s, n), bg="white")
     
     
-    dev.off()
+    if (my_file != "NONE") {
+        dev.off()
+    }
 }
 
 my_hist <- function(var1, my_file, my_xlab, nbreaks) {
