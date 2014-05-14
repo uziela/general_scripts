@@ -5,7 +5,7 @@
 script_name=`basename $0`
 
 if [ $# != 1 ] ; then
-    echo "
+    echo_both "
 Usage: 
 
 $script_name [Parameters]
@@ -19,8 +19,12 @@ fi
 
 input_dir=$1
 
+echo_both "$script_name started with parameters: $*"
+
 #count=`ls -1 $input_dir/*.txt 2>/dev/null | wc -l`
 if [ ! -d $input_dir ] ; then
     echo_both "------------------- stage 1 -------------------"
     mkdir $input_dir
 fi
+
+echo_both "$script_name done."
