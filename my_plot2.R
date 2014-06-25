@@ -1,6 +1,6 @@
 library(tools)
 
-my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim=NULL, smooth=F) {
+my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim=NULL, smooth=F, red_points=NULL) {
     cor1 <- my_cor(var1, var2, "pearson")
     cor2 <- my_cor(var1, var2, "spearman")
     rmse <- my_rmse(var1, var2)
@@ -18,6 +18,7 @@ my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim
     }
     if (!smooth) {
         plot(var1, var2, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim)
+        points(var1[red_points], var2[red_points], col="red")
     } else {
         if (is.null(my_ylim)) {
             smoothScatter(var1, var2, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim)
