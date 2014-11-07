@@ -13,7 +13,7 @@ my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim
             pdf(my_file, width=10, height=10)
             #pdf(my_file)
         } else {
-            png(my_file)
+            png(my_file, type=c("cairo"))
         }
     }
     if (!smooth) {
