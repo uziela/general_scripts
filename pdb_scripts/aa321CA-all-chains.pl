@@ -54,11 +54,12 @@ while(<IN_FILE>)
     if(/^ATOM/)
     {
     my $atomno=substr($_, 7, 4);
-    my $atomtype=substr($_, 13, 3);
+    my $atomtype=substr($_, 12, 4);
     my $resnum=substr($_,21,6);
     #my $chain=substr($_,21,1);
     $resnum=~s/\s+//g;
     #print "$resnum $old_resnum $atomtype\n";
+    #print $atomtype ;
     if($atomtype=~/CA/ && $old_resnum ne $resnum)
     {
         $res=substr($_,17, 3);
