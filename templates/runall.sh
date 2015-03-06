@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Written by Karolis Uziela in 2014
+# Written by Karolis Uziela in 2015
 
 script_name=`basename $0`
 
 if [ $# != 1 ] ; then
-    echo_both "
+    echo "
 Usage: 
 
 $script_name [Parameters]
