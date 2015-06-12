@@ -1,3 +1,5 @@
+# Written by Karolis Uziela in 2014
+
 library(tools)
 
 my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim=NULL, smooth=F, red_points=NULL) {
