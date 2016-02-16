@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Written by Karolis Uziela in 2015
+# Written by Karolis Uziela in 2016
 
 script_name=`basename $0`
 
@@ -22,9 +22,9 @@ input_dir=$1
 echo_both "$script_name started with parameters: $*"
 
 for i in $input_dir/* ; do
-    year=`cat $i | grep 2014`
+    year=`cat $i | grep 2016`
     if [ "$year" != "" ] ; then
-        sed -i "s/2014/2015/" $i
+        sed -i "s/2016/2016/" $i
     fi
 done
 
