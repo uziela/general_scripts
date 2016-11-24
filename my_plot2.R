@@ -14,6 +14,9 @@ my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim
         if (my_ext == "pdf") {
             pdf(my_file, width=10, height=10)
             #pdf(my_file)
+        } else if (my_ext == "eps") {
+            setEPS()
+            postscript(my_file, width=10, height=10, fonts=c('serif'))
         } else {
             png(my_file, type=c("cairo"))
         }
