@@ -24,7 +24,7 @@ echo_both "$script_name started with parameters: $*"
 for i in $input_dir/* ; do
     year=`cat $i | grep 2016`
     if [ "$year" != "" ] ; then
-        sed -i "s/2016/2016/" $i
+        sed -i "s/2016/2017/" $i
     fi
 done
 

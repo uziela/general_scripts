@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# Written by Karolis Uziela in 2016
+# Written by Karolis Uziela in 2017
 
 cargs <- commandArgs(trailingOnly = TRUE)
 

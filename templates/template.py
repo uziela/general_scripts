@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Written by Karolis Uziela in 2016
+# Written by Karolis Uziela in 2017
 
 import sys
 

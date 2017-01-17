@@ -25,8 +25,12 @@ my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, m
     #colors <- densCols(var1, var2, colramp=colorRampPalette(c("black", "white")))
     #colors <- densCols(var1, var2, colramp=colorRampPalette(rev(grey.colors(9))[-c(1:3)]))
     colors <- densCols(var1, var2)
-    MY_CEX=1.5
+    MY_CEX=2
     plot(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=MY_CEX, cex.lab=MY_CEX)
+    cols <- colorRampPalette(c("white", "red"))( 9 )
+    cols <- cols[3:length(cols)]
+    colors2 <- densCols(var1, var2, colramp = colorRampPalette(cols))
+    points(var1[red_points], var2[red_points], col=colors2[red_points])
 #    if (!smooth) {
 #        plot(var1, var2, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim)
 #        points(var1[red_points], var2[red_points], col="red")
@@ -53,7 +57,8 @@ my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, m
 
 my_cor <- function(var1, var2, my_method) {
     cor_x <- cor(var1, var2, method=my_method)
-    cor_x <- round(cor_x, 3)
+    #cor_x <- round(cor_x, 2)
+    cor_x <- format(round(cor_x, 2), nsmall = 2)
     return(cor_x)
 }
 
