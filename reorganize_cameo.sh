@@ -21,11 +21,11 @@ fi
 input_dir=$1
 output_dir=$2
 
-echo_both "$script_name started with parameters: $*"
+echo "$script_name started with parameters: $*"
 
 #count=`ls -1 $input_dir/*.txt 2>/dev/null | wc -l`
 if [ ! -d $output_dir ] ; then
-    echo_both "------------------- stage 1 -------------------"
+    echo "------------------- stage 1 -------------------"
     mkdir $output_dir
     mkdir $output_dir/native
     mkdir $output_dir/server_predictions
@@ -44,7 +44,7 @@ if [ ! -d $output_dir ] ; then
                     model_name=$server-$model
                     mkdir $output_dir/server_predictions/$target/$model_name
                     if [ ! -f $model_dir/$model.pdb ] ; then
-                        echo_both "WARNING: $model_dir/$model.pdb does not exist"
+                        echo "WARNING: $model_dir/$model.pdb does not exist"
                     else
                         cp $model_dir/$model.pdb $output_dir/server_predictions/$target/$model_name/$model_name.pdb
                     fi
@@ -54,4 +54,4 @@ if [ ! -d $output_dir ] ; then
     done
 fi
 
-echo_both "$script_name done."
+echo "$script_name done."

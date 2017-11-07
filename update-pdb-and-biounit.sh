@@ -2,17 +2,17 @@
 
 # Written by Karolis Uziela in 2013
 
-echo_both "------------------- stage 1 -------------------"
+echo "------------------- stage 1 -------------------"
 MYDATE=`date --rfc-3339=date`
 mkdir rsync-logs-$MYDATE
 rsync -rlpt -v -z -c --delete --port=33444 rsync.wwpdb.org::ftp_data/biounit/coordinates/divided/ rsync_biounit 1>rsync-logs-$MYDATE/biounit.log 2>rsync-logs-$MYDATE/biounit.err
 rsync -rlpt -v -z --delete --port=33444 rsync.wwpdb.org::ftp_data/structures/divided/pdb/ rsync_pdb 1>rsync-logs-$MYDATE/pdb.log 2>rsync-logs-$MYDATE/pdb.err
 
-echo_both "------------------- stage 2 -------------------"
+echo "------------------- stage 2 -------------------"
 cp -r rsync_biounit biounit-$MYDATE
 cp -r rsync_pdb pdb-$MYDATE
 
-echo_both "------------------- stage 3 -------------------"
+echo "------------------- stage 3 -------------------"
 for i in biounit-$MYDATE/* pdb-$MYDATE/* ; do
     count=`ls -1 $i/*.gz 2>/dev/null | wc -l`
     if [ $count != "0" ] ; then
@@ -25,7 +25,7 @@ ln -s biounit-$MYDATE biounit
 ln -s pdb-$MYDATE pdb
 
 
-echo_both "------------------- stage 4 -------------------"
+echo "------------------- stage 4 -------------------"
 
 rm -r pdb_all biounit_all 2>/dev/null
 

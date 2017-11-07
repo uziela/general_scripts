@@ -5,7 +5,7 @@
 script_name=`basename $0`
 
 if [ $# != 1 ] ; then
-    echo_both "
+    echo "
 Usage: 
 
 $script_name [Parameters]
@@ -19,7 +19,7 @@ fi
 
 input_dir=$1
 
-echo_both "$script_name started with parameters: $*"
+echo "$script_name started with parameters: $*"
 
 for i in $input_dir/* ; do
     year=`cat $i | grep 2016`
@@ -28,4 +28,4 @@ for i in $input_dir/* ; do
     fi
 done
 
-echo_both "$script_name done."
+echo "$script_name done."
