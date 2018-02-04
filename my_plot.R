@@ -6,7 +6,7 @@ my_cor <- function(var1, var2, my_method) {
     return(cor_x)
 }
 
-my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, red_points=NULL, blue_points=NULL, green_points=NULL, my_labels=NULL) {
+my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, red_points=NULL, blue_points=NULL, green_points=NULL, my_labels=NULL, ...) {
     cor1 <- my_cor(var1, var2, "pearson")
     cor2 <- my_cor(var1, var2, "spearman")
     #print(paste("file", my_file))
@@ -31,16 +31,16 @@ my_plot <- function(var1, var2, my_file, my_xlab, my_ylab, red_points=NULL, blue
     }
 
     if (is.null(my_labels)) {
-        plot(var1, var2, xlab=my_xlab, ylab=my_ylab)
-        points(var1[red_points], var2[red_points], col="red")
-        points(var1[blue_points], var2[blue_points], col="blue")
-        points(var1[green_points], var2[green_points], col="green")
+        plot(var1, var2, xlab=my_xlab, ylab=my_ylab, ...)
+        points(var1[red_points], var2[red_points], col="red", ...)
+        points(var1[blue_points], var2[blue_points], col="blue", ...)
+        points(var1[green_points], var2[green_points], col="green", ...)
     } else {
-        plot(var1, var2, xlab=my_xlab, ylab=my_ylab, cex=0.5)
-        points(var1[red_points], var2[red_points], col="red", cex=0.5)
-        points(var1[blue_points], var2[blue_points], col="blue", cex=0.5)
-        points(var1[green_points], var2[green_points], col="green", cex=0.5)
-        text(var1, var2, xlab=my_xlab, ylab=my_ylab, labels=my_labels, pos=3, cex=0.5, srt=85)
+        plot(var1, var2, xlab=my_xlab, ylab=my_ylab, cex=0.5, ...)
+        points(var1[red_points], var2[red_points], col="red", cex=0.5, ...)
+        points(var1[blue_points], var2[blue_points], col="blue", cex=0.5, ...)
+        points(var1[green_points], var2[green_points], col="green", cex=0.5, ...)
+        text(var1, var2, xlab=my_xlab, ylab=my_ylab, labels=my_labels, pos=3, cex=0.5, srt=85, ...)
         #text(var1[red_points], var2[red_points], xlab=my_xlab, ylab=my_ylab, labels=my_labels, col="red")
         #text(var1[blue_points], var2[blue_points], xlab=my_xlab, ylab=my_ylab, labels=my_labels, col="blue")
         #text(var1[green_points], var2[green_points], xlab=my_xlab, ylab=my_ylab, labels=my_labels, col="green")

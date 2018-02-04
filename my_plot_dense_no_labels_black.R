@@ -44,8 +44,8 @@ my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, m
     cols <- colorRampPalette(c("white", "red"))( 9 )
     cols <- cols[3:length(cols)]
     colors2 <- densCols(var1, var2, colramp = colorRampPalette(cols))
-    points(var1[red_points], var2[red_points], col=colors2[red_points])
-    #points(var1[red_points], var2[red_points], col='black')
+    #points(var1[red_points], var2[red_points], col=colors2[red_points])
+    points(var1[red_points], var2[red_points], col='black')
 #    if (!smooth) {
 #        plot(var1, var2, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim)
 #        points(var1[red_points], var2[red_points], col="red")

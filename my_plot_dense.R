@@ -3,7 +3,7 @@
 library(tools)
 library(dplyr)
 
-my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim=NULL, smooth=F, red_points=NULL) {
+my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim=NULL, smooth=F, red_points=NULL, MY_CEX=2) {
     cor1 <- my_cor(var1, var2, "pearson")
     cor2 <- my_cor(var1, var2, "spearman")
     rmse <- my_rmse(var1, var2)
@@ -25,7 +25,7 @@ my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, m
     #colors <- densCols(var1, var2, colramp=colorRampPalette(c("black", "white")))
     #colors <- densCols(var1, var2, colramp=colorRampPalette(rev(grey.colors(9))[-c(1:3)]))
     colors <- densCols(var1, var2)
-    MY_CEX=2
+    #MY_CEX=2
     plot(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=MY_CEX, cex.lab=MY_CEX)
     cols <- colorRampPalette(c("white", "red"))( 9 )
     cols <- cols[3:length(cols)]

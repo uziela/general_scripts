@@ -31,12 +31,12 @@ my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, m
     plot(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=CEX_AXIS, cex.lab=MY_CEX, xaxt='n', yaxt='n', main=maint, cex.main=MY_CEX, font.main = 1, ...)
     if (xaxis & yaxis) {
         #plot(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=CEX_AXIS, cex.lab=MY_CEX, main=maint, cex.main=MY_CEX, font.main = 1)
-        axis(at=c(0,1), labels=c(0,1), side=1, cex.axis=CEX_AXIS, mgp=c(3,3,0))
-        axis(at=c(0,1), las=2, labels=c(0,1), side=2, cex.axis=CEX_AXIS)
+        axis(at=my_xlim, labels=my_xlim, side=1, cex.axis=CEX_AXIS, mgp=c(3,3,0), las=2)
+        axis(at=my_ylim, las=2, labels=my_ylim, side=2, cex.axis=CEX_AXIS)
     } else if (xaxis) {
-        axis(at=c(0,1), labels=c(0,1), side=1, cex.axis=CEX_AXIS, mgp=c(3,3,0))
+        axis(at=my_xlim, labels=my_xlim, side=1, cex.axis=CEX_AXIS, mgp=c(3,3,0), las=2)
     } else if (yaxis) {
-        axis(at=c(0,1), las=2, labels=c(0,1), side=2, cex.axis=CEX_AXIS)
+        axis(at=my_ylim, las=2, labels=my_ylim, side=2, cex.axis=CEX_AXIS)
         #plot(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=CEX_AXIS, cex.lab=MY_CEX, xaxt='n', main=maint, cex.main=MY_CEX, font.main = 1, las=2)
     } #else {
         #plot(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=MY_CEX, cex.lab=MY_CEX, xaxt='n', yaxt='n', main=maint, cex.main=MY_CEX, font.main = 1, las=2)

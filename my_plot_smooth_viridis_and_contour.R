@@ -2,8 +2,10 @@
 
 library(tools)
 library(dplyr)
+library(viridis)
+library(MASS)
 
-my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim=NULL, smooth=F, red_points=NULL, maint=NULL, MY_CEX=1, xaxis=FALSE, yaxis=FALSE, colors=NULL, ...) {
+my_plot_smooth_viridis <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, my_ylim=NULL, smooth=F, red_points=NULL, maint=NULL, MY_CEX=1, xaxis=FALSE, yaxis=FALSE, colors=NULL, ...) {
     cor1 <- my_cor(var1, var2, "pearson")
     cor2 <- my_cor(var1, var2, "spearman")
     rmse <- my_rmse(var1, var2)
@@ -28,7 +30,11 @@ my_plot_dense <- function(var1, var2, my_file, my_xlab, my_ylab, my_xlim=NULL, m
         colors <- densCols(var1, var2)
     }
     CEX_AXIS=4
-    plot(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=CEX_AXIS, cex.lab=MY_CEX, xaxt='n', yaxt='n', main=maint, cex.main=MY_CEX, font.main = 1, ...)
+    smoothScatter(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=CEX_AXIS, cex.lab=MY_CEX, xaxt='n', yaxt='n', main=maint, cex.main=MY_CEX, font.main = 1, colramp=viridis, nrpoints=0, ...)
+    z <- kde2d(var1, var2)
+    z$z <- log(z$z + 1)
+    contour(z, drawlabels=FALSE, nlevels=20, add=TRUE)
+
     if (xaxis & yaxis) {
         #plot(var1, var2, col=colors, xlab=my_xlab, ylab=my_ylab, xlim=my_xlim, ylim=my_ylim, cex.axis=CEX_AXIS, cex.lab=MY_CEX, main=maint, cex.main=MY_CEX, font.main = 1)
         axis(at=c(0,1), labels=c(0,1), side=1, cex.axis=CEX_AXIS, mgp=c(3,3,0))
