@@ -39,11 +39,13 @@ def list_directory(input_dir, ends_with=""):
     """ List files in a directory 
     Arguments:
         input_dir -- directory to read
-        ends_with -- list only files whose filename end match "ends_with" pattern (optional)
+        ends_with -- list only files whose filename end match "ends_with" 
+                     pattern (optional)
     """
     files = []
     for f in os.listdir(input_dir):
-        if os.path.isfile(os.path.join(input_dir, f)) and f.endswith(ends_with):
+        if os.path.isfile(os.path.join(input_dir, f)) and \
+                          f.endswith(ends_with):
             files.append(os.path.join(input_dir, f))
     return files
 
@@ -61,7 +63,8 @@ def list_directory(input_dir, ends_with=""):
 if __name__ == '__main__':
     args = get_arguments()
     if args.verbose: 
-        sys.stderr.write("%s started running with arguments: %s\n" % (sys.argv[0], ' '.join(sys.argv[1:])))
+        sys.stderr.write("%s started running with arguments: %s\n" % 
+            (sys.argv[0], ' '.join(sys.argv[1:])))
 
     print(list_directory(args.input_dir, ends_with=".csv"))
 
