@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Written by Karolis Uziela in 2017
+# Written by Karolis Uziela in 2018
 
 import sys
 
@@ -24,24 +24,21 @@ if len(sys.argv) != 3:
 
 ################################ Functions ################################
 
-def read_data(filename):
+def read_data(input_file):
     
-    f = open(filename)
-    
-    while True:
-        line = f.readline()
-        if len(line) == 0: 
-            break
-        line = line.rstrip('\n')
-        #bits = line.split("\t")     
+    with open(input_file) as f: 
+        while True:
+            line = f.readline()
+            if len(line) == 0: 
+                break
+            line = line.rstrip('\n')
+            #print(line)
+            #bits = line.split("\t")     
         
-    f.close()
     
 def write_data(output_file, out_str):
-    f = open(output_file,"w")  
-    #out_str = "%s %f \n" % str_var f_var
-    f.write(out_str)    
-    f.close()
+    with open(output_file, "w") as f:
+        f.write(out_str)    
 
 
 ################################ Variables ################################
@@ -61,7 +58,6 @@ output_file = sys.argv[2]
 ################################ Main script ################################
     
 sys.stderr.write("%s is running with arguments: %s\n" % (script_name, str(sys.argv[1:])))
-
 
 sys.stderr.write("%s done.\n" % script_name)
 
