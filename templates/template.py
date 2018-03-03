@@ -63,13 +63,16 @@ def list_directory(input_dir, ends_with=""):
 if __name__ == '__main__':
     args = get_arguments()
     if args.verbose: 
-        sys.stderr.write("%s started running with arguments: %s\n" % 
-            (sys.argv[0], ' '.join(sys.argv[1:])))
+        # When the script starts, print an information message with the name 
+        # of the script and its  arguments
+        sys.stderr.write("{} started running with arguments: {}\n".format(
+            (sys.argv[0], ' '.join(sys.argv[1:]))))
 
-    print(list_directory(args.input_dir, ends_with=".csv"))
+    #print(list_directory(args.input_dir, ends_with=".csv"))
 
     if args.verbose:
-        sys.stderr.write("%s done.\n" % sys.argv[0])
+        # Print another information message when the script finishes
+        sys.stderr.write("{} done.\n".format(sys.argv[0]))
 
 
 
