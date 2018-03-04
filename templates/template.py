@@ -66,7 +66,7 @@ if __name__ == '__main__':
         # When the script starts, print an information message with the name 
         # of the script and its  arguments
         sys.stderr.write("{} started running with arguments: {}\n".format(
-            (sys.argv[0], ' '.join(sys.argv[1:]))))
+            sys.argv[0], ' '.join(sys.argv[1:])))
 
     #print(list_directory(args.input_dir, ends_with=".csv"))
 
