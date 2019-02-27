@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# Written by Karolis Uziela in 2017
+# Written by Karolis Uziela in 2019
 
 
 use strict;

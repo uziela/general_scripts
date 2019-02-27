@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Written by Karolis Uziela in 2019
+# Written by Karolis Uziela in 2016
 
 script_name=`basename $0`
 
@@ -21,10 +21,11 @@ input_dir=$1
 
 echo "$script_name started with parameters: $*"
 
-#count=`ls -1 $input_dir/*.txt 2>/dev/null | wc -l`
-if [ ! -d $input_dir ] ; then
-    echo "------------------- stage 1 -------------------"
-    mkdir $input_dir
-fi
+for i in $input_dir/* ; do
+    year=`cat $i | grep echo_both`
+    if [ "$year" != "" ] ; then
+        sed -i "s/echo_both/echo/" $i
+    fi
+done
 
 echo "$script_name done."
