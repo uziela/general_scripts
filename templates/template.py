@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Written by Karolis Uziela in 2019
+# Written by Karolis Uziela in 2020
 
 import sys
 import argparse
