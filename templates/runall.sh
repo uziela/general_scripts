@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Written by Karolis Uziela in 2020
+# Written by Karolis Uziela in 2024
 
 script_name=`basename $0`
 

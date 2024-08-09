@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
-# Written by Karolis Uziela in 2020
+# Written by Karolis Uziela in 2024
 
 import sys
 import argparse
 import os
 from IPython import embed
+import cv2
+import numpy as np
 
 ################################ Functions ####################################
 
@@ -50,6 +52,12 @@ def list_directory(input_dir, ends_with=""):
             files.append(os.path.join(input_dir, f))
     return files
 
+def load_image_into_numpy_array(image_path):
+    image_np = cv2.imread(image_path, cv2.IMREAD_COLOR)
+    if image_np is None:
+        return None, (400, 'Unsupported image format.')
+    image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
+    return image_np
 
 ###################### Global constants and Variables #########################
 
