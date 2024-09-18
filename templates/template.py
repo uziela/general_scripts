@@ -59,7 +59,7 @@ def load_image_into_numpy_array(image_path):
     image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
     return image_np
 
-def main():
+def main(args):
     return
 
 ###################### Global constants and Variables #########################
@@ -81,7 +81,7 @@ if __name__ == '__main__':
             sys.argv[0], ' '.join(sys.argv[1:])))
 
     #print(list_directory(args.input_dir, ends_with=".csv"))
-    main()
+    main(args)
 
     if args.verbose:
         # Print another information message when the script finishes
