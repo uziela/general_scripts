@@ -83,6 +83,7 @@ if __name__ == '__main__':
     #print(list_directory(args.input_dir, ends_with=".csv"))
     main(args)
 
+
     if args.verbose:
         # Print another information message when the script finishes
         sys.stderr.write("{} done.\n".format(sys.argv[0]))
