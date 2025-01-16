@@ -22,10 +22,10 @@ input_dir=$1
 echo "$script_name started with parameters: $*"
 
 for i in $input_dir/* ; do
-    year=`cat $i | grep 2020`
+    year=`cat $i | grep 2024`
     if [ "$year" != "" ] ; then
         echo "Replacing: $i"
-        sed -i "s/2020/2024/" $i
+        sed -i "s/2024/2025/" $i
     fi
 done
 
